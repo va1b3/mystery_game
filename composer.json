@@ -1,5 +1,7 @@
 {
-    "name": "test/mystery",
+    "name": "game/mystery",
+    "description": "Some mystery game implementation",
+    "license": "MIT",
     "require": {
         "vlucas/phpdotenv": "^5.6"
     },
