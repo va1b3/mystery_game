@@ -1,0 +1,83 @@
+.game {
+    position: relative;
+    background: url("../img/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 750px;
+    height: 550px;
+    border: 1px dashed;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 1s;
+}
+
+.game-end {
+    opacity: .6;
+}
+
+.boat {
+    position: absolute;
+    width: 30%!important;
+    top: 40%;
+    right: 50%;
+    left: 50%;
+    padding: 5px;
+}
+
+.items {
+    width: 10%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px 10px;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 20px 0px #00ff07;
+    float: right;
+    transition: 1s;
+}
+
+.items:hover {
+    box-shadow: inset 0px 0px 20px 0px #d9ff00;
+}
+
+.item-blocked {
+    box-shadow: inset 0px 0px 20px 0px #ff0000!important;
+}
+
+.item-hidden {
+    opacity: 0;
+}
+
+.item-floated {
+    float: left;
+}
+
+.boat-floated {
+    left: 20%;
+}
+
+.board-table {
+    width: 300px;
+    height: auto;
+    font-size: 28px;
+    text-align: center;
+    border: 1px dashed;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.board-caption {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.board-head {
+    text-decoration: underline;
+}
+
+@media(max-width:768px) {
+    .game {
+        width: 450px;
+        height: 300px;
+    }
+}
