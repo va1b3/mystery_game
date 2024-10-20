@@ -1,3 +1,8 @@
+main {
+    opacity: 0;
+    transition: 1s;
+}
+
 .game {
     position: relative;
     background: url("../img/background.png");
@@ -73,6 +78,17 @@
 
 .board-head {
     text-decoration: underline;
+}
+
+.loader {
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    transform:translate(-50%, -50%); 
+    font-size:28px;
+    background: #c6d8ff;
+    padding: 20px;
+    border-radius: 10px 50px 30px 40px;
 }
 
 @media(max-width:768px) {
