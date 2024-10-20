@@ -1,10 +1,18 @@
 /*
- * Only a visual display of the game
+ * Bootloader if there are performance problems
+ */
+setTimeout(function() {
+    document.getElementsByTagName('loader')[0].style.display = 'none';
+    document.getElementsByTagName('main')[0].style.opacity = '1';
+}, 3000);
+
+/*
+ * Only visual part of the game
  * Calculations take place on the server
  */
 document.addEventListener('DOMContentLoaded', function () {
+    newGame();
     updateBoard();
-    ajaxGetRequest("src/Ajax/AjaxNewGame.php");
     document.getElementById('game').addEventListener('click', function(event) {
         if (event.target.classList.contains('items')) {
             ajaxGetRequest("src/Ajax/AjaxGame.php?item=" + event.target.name).onload = function() {
@@ -27,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function moveItem(element) {
-    element.classList.toggle('item-hidden');
+    element.classList.add('item-hidden');
     setTimeout(function() {
-        element.classList.toggle('item-hidden');
+        element.classList.remove('item-hidden');
         element.classList.toggle('item-floated');
     }, 800);
 }
@@ -45,9 +53,7 @@ function blockItem(element) {
 function unblockItems() {
     let items = document.getElementById('game').getElementsByClassName('items');
     for (let i = 0; i < items.length; i++) {
-        if (items[i].classList.contains('item-blocked')) {
-            items[i].classList.remove('item-blocked');
-        }
+        items[i].classList.remove('item-blocked');
     }
 }
 
@@ -56,11 +62,25 @@ function gameOver() {
         items = game.getElementsByClassName('items');
     setTimeout(function() {
         for (let i = 0; i < items.length; i++) {
-            items[i].classList.toggle('item-hidden');
+            items[i].classList.add('item-hidden');
         }
-        game.classList.toggle('game-end');
-        document.getElementById('new-button').classList.toggle('new-game-button');
+        game.classList.add('game-end');
+        document.getElementById('new-button').classList.add('new-game-button');
     }, 2000);
+}
+
+function newGame() {
+    ajaxGetRequest("src/Ajax/AjaxNewGame.php");
+    let game = document.getElementById('game'),
+        items = game.getElementsByClassName('items');
+    for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove('item-hidden');
+        items[i].classList.remove('item-floated');
+    }
+    game.classList.remove('game-end');
+    document.getElementById('boat').classList.remove('boat-floated');
+    document.getElementById('new-button').classList.remove('new-game-button');
+    unblockItems();
 }
 
 function updateBoard() {
@@ -70,4 +90,3 @@ function updateBoard() {
         }
     };
 }
-
