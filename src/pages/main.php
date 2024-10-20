@@ -14,18 +14,25 @@
         <header class="header">
             <div>Welcome, <span class="username"><?php echo $_SESSION['name']; ?></span>!</div>
             <div>
-                <button id="new-button" class="header-button" onclick="window.location.reload()">New</button>
+                <button id="new-button" class="header-button" onclick="newGame()">New</button>
                 <button class="header-button" onclick="logout()">Out</button>
             </div>
         </header>
         <main>
             <div id="game" class="game">
-                <img id="boat" name="boat" src="<?php echo $_ENV['PATH_IMG']; ?>boat.svg" class="items boat" draggable="false"></img>
-                <img name="wolf" src="<?php echo $_ENV['PATH_IMG']; ?>wolf.svg" class="items" draggable="false"></img>
-                <img name="goat" src="<?php echo $_ENV['PATH_IMG']; ?>goat.svg" class="items" draggable="false"></img>
-                <img name="cabbage" src="<?php echo $_ENV['PATH_IMG']; ?>cabbage.svg" class="items" draggable="false"></img>
+                <img id="boat" name="boat" class="items boat" draggable="false" 
+                     src="<?php echo $_ENV['PATH_IMG']; ?>boat.svg"></img>
+                <img name="wolf" class="items" draggable="false" 
+                     src="<?php echo $_ENV['PATH_IMG']; ?>wolf.svg"></img>
+                <img name="goat" class="items" draggable="false" 
+                     src="<?php echo $_ENV['PATH_IMG']; ?>goat.svg"></img>
+                <img name="cabbage" class="items" draggable="false" 
+                     src="<?php echo $_ENV['PATH_IMG']; ?>cabbage.svg"></img>
             </div>
             <div id="board"></div>
         </main>
+        <loader>
+            <div class="loader">Loading...</div>
+        </loader>
     </body>
 </html>
